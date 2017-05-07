@@ -7,7 +7,7 @@ Container will be started with the same user name/user id/group id and home dire
 
 # Running local build
 docker build -t toolbox .
-DIGITALOCEAN_ACCESS_TOKEN="tocken" IMAGE="toolbox:latest" bash env.sh
+DIGITALOCEAN_ACCESS_TOKEN="token" IMAGE="toolbox:latest" bash env.sh
 
 # Running pre-build version from Docker Hub
-DIGITALOCEAN_ACCESS_TOKEN="tocken" bash env.sh
+DIGITALOCEAN_ACCESS_TOKEN="token" bash env.sh
