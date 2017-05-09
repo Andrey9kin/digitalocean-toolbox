@@ -1,6 +1,7 @@
 FROM ubuntu:17.04
 
 ENV K8S_VERSION v1.6.2
+ENV KOMPOSE_VERSION v0.6.0
 ENV TF_VERSION 0.9.4
 ENV CFSSL_VERSION 1.2
 ENV DOCTL_VERSION 1.6.0
@@ -20,7 +21,7 @@ ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 # K8S
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/${K8S_VERSION}/bin/linux/amd64/kubectl && mv kubectl /usr/local/bin
-
+RUN curl -L -o kompose.tar.gz https://github.com/kubernetes-incubator/kompose/releases/download/${KOMPOSE_VERSION}/kompose-linux-amd64.tar.gz && tar xvf kompose.tar.gz && mv kompose-linux-amd64 /usr/local/bin/ && rm -rf kompose.tar.gz
 # Terraform
 RUN curl -Lo tf.zip https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip && unzip tf.zip && mv terraform /usr/local/bin/ && rm -f terraform
 
